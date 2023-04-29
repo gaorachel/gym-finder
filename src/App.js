@@ -1,14 +1,17 @@
-import style from "./App.module.css";
 import { Header } from "./components/Header/Header";
+import { Map } from "./components/Main/Map";
+import style from "./App.module.css";
 
-function App() {
+export function App() {
   return (
     <div className={style.container}>
-      <Header className={style.header} />
+      <header className={style.header}>
+        <Header />
+      </header>
       <sidebar className={style.sidebar}>Sidebar</sidebar>
-      <main className={style.main}>Main</main>
+      <main className={style.main}>
+        <Map />
+      </main>
     </div>
   );
 }
-
-export default App;
