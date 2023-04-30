@@ -9,14 +9,16 @@ export function Map() {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLat] = useState(-0.1276);
-  const [lat, setLng] = useState(51.5072); // [-0.1276, 51.5072] is London
+  const [lat, setLng] = useState(51.5072); // default [-0.1276, 51.5072] is London
   const [zoom, setZoom] = useState(13);
   const [places, setPlaces] = useState([]);
 
+  // mock data, will get them from user input later
   const searchWord = "cafe";
   const proximity = `${lng},${lat}`;
   const navProfile = "walking";
 
+  // Fetch the map based on the longitude and latitude and show it on the screen.
   useEffect(() => {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
@@ -27,6 +29,7 @@ export function Map() {
     });
   }, [lat, lng, zoom]);
 
+  // Fetch the place data based on the user's input
   useEffect(() => {
     fetchCityAndPlaces(searchWord, proximity, navProfile).then((response) => {
       setPlaces(response);
@@ -37,6 +40,7 @@ export function Map() {
     place.properties.id = i;
   });
 
+  // Locate places on the map as a layer
   map.current?.on("load", () => {
     map.current.addLayer({
       id: "locations",
