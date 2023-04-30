@@ -9,18 +9,13 @@ export function Map() {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLat] = useState(-0.1276);
-  const [lat, setLng] = useState(51.5072);
-  const [zoom, setZoom] = useState(9);
+  const [lat, setLng] = useState(51.5072); // [-0.1276, 51.5072] is London
+  const [zoom, setZoom] = useState(13);
+  const [places, setPlaces] = useState([]);
 
   const searchWord = "cafe";
   const proximity = `${lng},${lat}`;
   const navProfile = "walking";
-
-  const places = fetchCityAndPlaces(searchWord, proximity, navProfile);
-
-  places.features.forEach((place, i) => {
-    place.properties.id = i;
-  });
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -32,8 +27,18 @@ export function Map() {
     });
   }, [lat, lng, zoom]);
 
-  map.on("load", () => {
-    map.addLayer({
+  useEffect(() => {
+    fetchCityAndPlaces(searchWord, proximity, navProfile).then((response) => {
+      setPlaces(response);
+    });
+  }, [searchWord, proximity, navProfile]);
+
+  places?.features?.forEach((place, i) => {
+    place.properties.id = i;
+  });
+
+  map.current?.on("load", () => {
+    map.current.addLayer({
       id: "locations",
       type: "circle",
       source: {
