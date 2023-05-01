@@ -1,19 +1,14 @@
 .header {
   grid-area: header;
-  height: 4rem;
-  /* background-color: #218ce6; */
-  background-color: #1c59a7;
 }
 
 .sidebar {
   grid-area: sidebar;
   background-color: #1c59a7;
-  height: 96rem;
 }
 
 .main {
   grid-area: main;
-  height: 96rem;
 }
 
 .container {
