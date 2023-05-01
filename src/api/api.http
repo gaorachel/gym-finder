@@ -1,0 +1,8 @@
+# GET https://api.mapbox.com/geocoding/v5/mapbox.places/London/gym.json?access_token=
+# Content-Type: application/json
+
+https://api.mapbox.com/search/searchbox/v1/suggest?q=gym&language=en&limit=10&country=gb&access_token=pk.eyJ1IjoicmFjaGVsLWdhbyIsImEiOiJjbGgwb3NjdXAwOHlmM2txb2F3YW1iZXJwIn0.hY-0zAh70s0XUgEr15gFbQ
+
+# GET https://api.mapbox.com/search/searchbox/v1/category/coffee?access_token=pk.eyJ1IjoicmFjaGVsLWdhbyIsImEiOiJjbGgwb3NjdXAwOHlmM2txb2F3YW1iZXJwIn0.hY-0zAh70s0XUgEr15gFbQ&language=en&limit=5&proximity=-73.935242%2C40
+Content-Type: application/json
+
