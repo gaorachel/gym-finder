@@ -8,7 +8,7 @@ export function App() {
       <header className={style.header}>
         <Header />
       </header>
-      <sidebar className={style.sidebar}>Sidebar</sidebar>
+      <aside className={style.sidebar}>Sidebar</aside>
       <main className={style.main}>
         <Map />
       </main>
