@@ -1,6 +1,8 @@
 .header {
   grid-area: header;
   height: 4rem;
+  /* background-color: #218ce6; */
+  background-color: #1c59a7;
 }
 
 .sidebar {
