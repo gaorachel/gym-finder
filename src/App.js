@@ -1,27 +1,35 @@
-import React, { createContext } from "react";
-import { Header } from "./components/Header/Header";
+import React, { createContext, useState } from "react";
+import { SearchInfo } from "./components/Header/Header";
 import { MapContainer } from "./components/Main/Map";
 import { PlaceList } from "./components/Sidebar/PlaceList";
 import style from "./App.module.css";
 
-export const PlaceContext = createContext(null);
+export const SearchContext = createContext({
+  searchPlace: "",
+  postcode: "",
+  longitude: NaN,
+  latitude: NaN,
+  navProfile: "",
+});
 
 export function App() {
+  const [searchData, setSearchData] = useState({});
+
   return (
     <div className={style.container}>
-      <PlaceContext.Provider>
+      <SearchContext.Provider value={[searchData, setSearchData]}>
         <header className={style.header}>
-          <Header />
+          <SearchInfo />
         </header>
 
-        <sidebar className={style.sidebar}>
+        <aside className={style.sidebar}>
           <PlaceList />
-        </sidebar>
+        </aside>
 
         <main className={style.main}>
           <MapContainer />
         </main>
-      </PlaceContext.Provider>
+      </SearchContext.Provider>
     </div>
   );
 }
