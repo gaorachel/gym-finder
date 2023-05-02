@@ -1,7 +1,8 @@
 import React, { createContext, useState } from "react";
-import { SearchInfo } from "./components/Header/Header";
-import { MapContainer } from "./components/Main/Map";
+import { Header } from "./components/Header/Header";
+import { MapContainer } from "./components/Main/MapContainer";
 import { PlaceList } from "./components/Sidebar/PlaceList";
+import { MapProvider } from "react-map-gl";
 import style from "./App.module.css";
 
 export const SearchContext = createContext({
@@ -16,20 +17,22 @@ export function App() {
   const [searchData, setSearchData] = useState({});
 
   return (
-    <div className={style.container}>
-      <SearchContext.Provider value={[searchData, setSearchData]}>
-        <header className={style.header}>
-          <SearchInfo />
-        </header>
+    <MapProvider>
+      <div className={style.container}>
+        <SearchContext.Provider value={[searchData, setSearchData]}>
+          <header className={style.header}>
+            <Header />
+          </header>
 
-        <aside className={style.sidebar}>
-          <PlaceList />
-        </aside>
+          <aside className={style.sidebar}>
+            <PlaceList />
+          </aside>
 
-        <main className={style.main}>
-          <MapContainer />
-        </main>
-      </SearchContext.Provider>
-    </div>
+          <main className={style.main}>
+            <MapContainer />
+          </main>
+        </SearchContext.Provider>
+      </div>
+    </MapProvider>
   );
 }

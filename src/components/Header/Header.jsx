@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { SearchContext } from "../../App";
-import { getCoordinate } from "../../api/getCoordinate";
+import { fetchCoordinate } from "../../api/fetchCoordinate";
 
-export function SearchInfo() {
+export function Header() {
   const [, setSearchData] = useContext(SearchContext);
 
   const handleSubmit = (e) => {
@@ -11,10 +11,9 @@ export function SearchInfo() {
     const formData = new FormData(e.target);
     const formJson = Object.fromEntries(formData.entries());
 
-    formJson.searchPlace = formJson.searchPlace.replaceAll(" ", "");
     formJson.postcode = formJson.postcode.replaceAll(" ", "");
 
-    getCoordinate(formJson.postcode).then((response) => {
+    fetchCoordinate(formJson.postcode).then((response) => {
       setSearchData({
         ...formJson,
         longitude: response.result.longitude,
