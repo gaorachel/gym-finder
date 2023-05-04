@@ -27,13 +27,22 @@ export function Header() {
       <input type="text" placeholder="Enter a place you want to search" name="searchPlace" />
       <input type="text" placeholder="Enter the postcode of the area you want to search" name="postcode" />
       <label>
-        <input type="radio" value="walking" name="navProfile" defaultChecked={true} /> Walking
+        <input type="radio" value="walking" name="travelMethod" defaultChecked={true} /> Walking
       </label>
       <label>
-        <input type="radio" value="driving" name="navProfile" /> Driving
+        <input type="radio" value="driving" name="travelMethod" /> Driving
       </label>
       <label>
-        <input type="radio" value="cycling" name="navProfile" /> Cycling
+        <input type="radio" value="cycling" name="travelMethod" /> Cycling
+      </label>
+      <label>
+        <input type="radio" value="5" name="travelTime" defaultChecked={true} /> 5 mins
+      </label>
+      <label>
+        <input type="radio" value="15" name="travelTime" /> 15 mins
+      </label>
+      <label>
+        <input type="radio" value="30" name="travelTime" /> 30 mins
       </label>
       <button type="submit"> Search </button>
     </form>
