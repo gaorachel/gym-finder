@@ -1,21 +1,24 @@
 import React, { useContext, useState } from "react";
 import { SearchContext } from "../../App";
+import { PlaceContext } from "../../App";
 import Map, { Source, Layer, Marker } from "react-map-gl";
 import { usePlaceData } from "../../hooks/use-place-data";
 import { useIsoData } from "../../hooks/use-iso-data";
+
 import styles from "./MapContainer.module.css";
 
 export function MapContainer() {
   const [searchData] = useContext(SearchContext);
+  const [clickedPlace] = useContext(PlaceContext);
+
+  const { places } = usePlaceData({});
+  const { isochrone } = useIsoData({});
 
   const [mapView, setMapView] = useState({
     longitude: -0.08763,
     latitude: 51.50821, // coordinate of London Bridge, London, UK.
     zoom: 8,
   });
-
-  const { places } = usePlaceData({});
-  const { isochrone } = useIsoData({});
 
   const placeLocatorStyle = {
     id: "point",
@@ -30,19 +33,21 @@ export function MapContainer() {
     id: "iso",
     type: "fill",
     paint: {
-      "fill-color": "#5a3fc0",
+      // "fill-color": "#5a3fc0",
+      "fill-color": "#007cbf",
+
       "fill-opacity": 0.3,
     },
   };
 
-  // const markerStyle = {
-  //   id: "iso",
-  //   type: "fill",
-  //   paint: {
-  //     "fill-color": "#5a3fc0",
-  //     "fill-opacity": 0.3,
-  //   },
-  // };
+  const clickedPlaceStyle = {
+    id: "big-point",
+    type: "circle",
+    paint: {
+      "circle-radius": 10,
+      "circle-color": "#FEC20C",
+    },
+  };
 
   if (Object.keys(searchData).length === 0) return <Map {...mapView} mapStyle="mapbox://styles/mapbox/light-v11" />;
 
@@ -65,10 +70,10 @@ export function MapContainer() {
       <Source id="isochrone-data" type="geojson" data={isochrone}>
         <Layer {...isochroneStyle} />
       </Source>
-      {/* 
-      <Marker longitude={-0.018583} latitude={51.50307}>
-        <Layer {...markerStyle} />
-      </Marker> */}
+
+      <Source id="clicked-place-data" type="geojson" data={clickedPlace}>
+        <Layer {...clickedPlaceStyle} />
+      </Source>
     </Map>
   );
 }

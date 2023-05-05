@@ -1,11 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { usePlaceData } from "../../hooks/use-place-data";
-import { SearchContext } from "../../App";
+import { PlaceContext, SearchContext } from "../../App";
 import styles from "./PlaceList.module.css";
 
 export function PlaceList() {
-  const { places, setPlaces } = usePlaceData({});
+  const { places } = usePlaceData({});
   const [searchData] = useContext(SearchContext);
+  const [, setClickedPlace] = useContext(PlaceContext);
 
   if (Object.keys(searchData).length === 0) return <div className={styles.blankList} />;
 
@@ -19,7 +20,7 @@ export function PlaceList() {
           <div
             className={styles.placeContainer}
             onClick={() => {
-              // place.properties.coordinates;
+              setClickedPlace(place);
             }}
             key={place.properties.mapbox_id}
           >

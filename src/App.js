@@ -10,11 +10,18 @@ export const SearchContext = createContext({
   postcode: "",
   longitude: NaN,
   latitude: NaN,
-  navProfile: "",
+  travelMethod: "",
+  travelTime: NaN,
+});
+
+export const PlaceContext = createContext({
+  name: "",
+  coordinate: "",
 });
 
 export function App() {
   const [searchData, setSearchData] = useState({});
+  const [clickedPlace, setClickedPlace] = useState({});
 
   return (
     <MapProvider>
@@ -23,14 +30,15 @@ export function App() {
           <header className={style.header}>
             <Header />
           </header>
+          <PlaceContext.Provider value={[clickedPlace, setClickedPlace]}>
+            <aside className={style.sidebar}>
+              <PlaceList />
+            </aside>
 
-          <aside className={style.sidebar}>
-            <PlaceList />
-          </aside>
-
-          <main className={style.main}>
-            <MapContainer />
-          </main>
+            <main className={style.main}>
+              <MapContainer />
+            </main>
+          </PlaceContext.Provider>
         </SearchContext.Provider>
       </div>
     </MapProvider>
