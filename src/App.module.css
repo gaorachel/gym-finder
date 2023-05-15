@@ -1,9 +1,15 @@
 .header {
   grid-area: header;
+  padding: 5px;
+  background-color: #fff;
+  color: var(--grey-5);
 }
 
 .sidebar {
   grid-area: sidebar;
+  /* background-color: var(--grey-3); */
+  background-color: var(--white-2);
+  color: #808080;
 }
 
 .main {
