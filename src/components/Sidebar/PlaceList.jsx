@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { usePlaceData } from "../../hooks/use-place-data";
 import { PlaceContext, SearchContext } from "../../App";
+import { IoLocationSharp } from "react-icons/io5";
 import styles from "./PlaceList.module.css";
 
 export function PlaceList() {
@@ -26,7 +27,8 @@ export function PlaceList() {
           >
             <div className={styles.placeName}>{place.properties.name}</div>
             <div className={styles.placeAddress}>
-              {place.properties.address} {place.properties.context.postcode?.name}
+              <IoLocationSharp className={styles.placeLocator} /> {place.properties.address}
+              {place.properties.context.postcode?.name}
             </div>
           </div>
         );
