@@ -1,0 +1,26 @@
+.placeSummary {
+  font-size: x-large;
+  font-weight: 600;
+  background-color: #f7f7f7;
+  color: #1c59a7;
+  padding: 10px;
+}
+
+.placeContainer {
+  padding: 5px 0px 5px 10px;
+  overflow: auto;
+  cursor: pointer;
+  border-bottom: 1px solid #e8e4e436;
+}
+
+.placeContainer:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.placeName {
+  font-weight: bold;
+}
+
+.placeAddress {
+  margin-left: 10px;
+}

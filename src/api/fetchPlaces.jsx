@@ -1,7 +1,7 @@
 import axios from "axios";
 import { cache } from "./cache";
 
-export async function fetchCityAndPlaces(searchWord = "cafe", proximity, navProfile = "walking") {
+export async function fetchPlaces(searchWord = "cafe", proximity = [-0.1276, 51.5072], navProfile = "walking") {
   // const response = await axios.get(`https://api.mapbox.com/search/searchbox/v1/category/${searchWord}?`, {
   //   params: {
   //     access_token: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
@@ -13,6 +13,5 @@ export async function fetchCityAndPlaces(searchWord = "cafe", proximity, navProf
 
   // console.log(response?.data);
   // return response?.data;
-
   return cache;
 }
