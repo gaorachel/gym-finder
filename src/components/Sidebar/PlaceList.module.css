@@ -6,6 +6,11 @@
   padding: 10px;
 }
 
+.blankList {
+  background-color: #eaeaec;
+  height: 100lvh;
+}
+
 .placeContainer {
   padding: 5px 0px 5px 10px;
   overflow: auto;

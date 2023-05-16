@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchPlaces } from "../api/fetchPlaces";
+import { SearchContext } from "../App";
 
 export function usePlaceData() {
-  // mock data, will get them from user input later
-  const searchWord = "cafe";
-  const proximity = "-0.1276, 51.5072";
-  const navProfile = "walking";
+  const [searchData] = useContext(SearchContext);
   const [places, setPlaces] = useState([]);
 
   useEffect(() => {
-    fetchPlaces(searchWord, proximity, navProfile).then((response) => {
+    fetchPlaces(searchData).then((response) => {
       setPlaces(response);
     });
-  }, [searchWord, proximity, navProfile]);
+  }, [searchData]);
 
   return { places, setPlaces };
 }

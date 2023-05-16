@@ -1,29 +1,31 @@
+import { useContext, useState } from "react";
 import { usePlaceData } from "../../hooks/use-place-data";
+import { PlaceContext, SearchContext } from "../../App";
 import styles from "./PlaceList.module.css";
 
 export function PlaceList() {
-  const { places, setPlaces } = usePlaceData({});
-  let newCoordinate = [];
+  const { places } = usePlaceData({});
+  const [searchData] = useContext(SearchContext);
+  const [, setClickedPlace] = useContext(PlaceContext);
 
-  const searchWord = "cafe";
+  if (Object.keys(searchData).length === 0) return <div className={styles.blankList} />;
 
   return (
     <div>
       <div className={styles.placeSummary}>
-        {places?.features?.length} x {searchWord.toUpperCase()} FOUND
+        {places?.features?.length} x {searchData?.searchPlace.toUpperCase()} FOUND
       </div>
       {places?.features?.map((place) => {
         return (
           <div
             className={styles.placeContainer}
             onClick={() => {
-              newCoordinate = place.properties.coordinates;
+              setClickedPlace(place);
             }}
+            key={place.properties.mapbox_id}
           >
-            <div className={styles.placeName} key={place.properties.mapbox_id + 1}>
-              {place.properties.name}
-            </div>
-            <div className={styles.placeAddress} key={place.properties.mapbox_id + 2}>
+            <div className={styles.placeName}>{place.properties.name}</div>
+            <div className={styles.placeAddress}>
               {place.properties.address} {place.properties.context.postcode?.name}
             </div>
           </div>

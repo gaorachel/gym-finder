@@ -1,27 +1,46 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 import { Header } from "./components/Header/Header";
-import { MapContainer } from "./components/Main/Map";
+import { MapContainer } from "./components/Main/MapContainer";
 import { PlaceList } from "./components/Sidebar/PlaceList";
+import { MapProvider } from "react-map-gl";
 import style from "./App.module.css";
 
-export const PlaceContext = createContext(null);
+export const SearchContext = createContext({
+  searchPlace: "",
+  postcode: "",
+  longitude: NaN,
+  latitude: NaN,
+  travelMethod: "",
+  travelTime: NaN,
+});
+
+export const PlaceContext = createContext({
+  name: "",
+  coordinate: "",
+});
 
 export function App() {
+  const [searchData, setSearchData] = useState({});
+  const [clickedPlace, setClickedPlace] = useState({});
+
   return (
-    <div className={style.container}>
-      <PlaceContext.Provider>
-        <header className={style.header}>
-          <Header />
-        </header>
+    <MapProvider>
+      <div className={style.container}>
+        <SearchContext.Provider value={[searchData, setSearchData]}>
+          <header className={style.header}>
+            <Header />
+          </header>
+          <PlaceContext.Provider value={[clickedPlace, setClickedPlace]}>
+            <aside className={style.sidebar}>
+              <PlaceList />
+            </aside>
 
-        <sidebar className={style.sidebar}>
-          <PlaceList />
-        </sidebar>
-
-        <main className={style.main}>
-          <MapContainer />
-        </main>
-      </PlaceContext.Provider>
-    </div>
+            <main className={style.main}>
+              <MapContainer />
+            </main>
+          </PlaceContext.Provider>
+        </SearchContext.Provider>
+      </div>
+    </MapProvider>
   );
 }
