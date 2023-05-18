@@ -21,3 +21,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+div[mapboxgl-children] {
+  display: none;
+}
+
+.mapboxgl-control-container {
+  display: none;
+}
