@@ -1,14 +1,11 @@
-.placeSummary {
-  font-size: large;
-  font-weight: 600;
-  background-color: #f7f7f7;
-  color: var(--blue-1);
-  padding: 10px;
-}
-
 .blankList {
   background-color: #f7f7f7;
   height: 100lvh;
+}
+
+.placeList {
+  height: 100lvh;
+  overflow: auto;
 }
 
 .placeContainer {
@@ -20,6 +17,12 @@
 
 .placeContainer:hover {
   background-color: rgba(254, 194, 12, 0.5);
+  color: var(--grey-5);
+}
+
+.highlighted {
+  background-color: var(--yellow-1) !important;
+  opacity: 1 !important;
   color: var(--grey-5);
 }
 
