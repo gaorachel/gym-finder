@@ -12,7 +12,6 @@ export function PlaceList() {
 
   if (Object.keys(searchData).length === 0) return <div className={styles.blankList} />;
 
-  console.log(clickedPlace);
   return (
     <div className={styles.placeList}>
       {places?.features?.map((place) => {
