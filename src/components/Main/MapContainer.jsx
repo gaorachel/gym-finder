@@ -72,6 +72,7 @@ export function MapContainer() {
           latitude: searchData.latitude,
         });
       }}
+      onMove={(e) => setMapView(e.mapView)}
       mapStyle="mapbox://styles/mapbox/light-v11"
     >
       {/* <Source id="place-data" type="geojson" data={places}>
