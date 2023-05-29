@@ -1,5 +1,6 @@
 :root {
   --blue-1: #1c59a7;
+  --blue-2: #218ce6;
   --white-1: #fff;
   --white-2: #f7f7f7;
   --grey-1: #eaeaec;
@@ -7,7 +8,7 @@
   --grey-3: #b1b1b4;
   --grey-4: #808080;
   --grey-5: #424242;
-  --yellow-1: rgb(254, 194, 12);
+  --yellow-1: #fec20c;
 }
 
 body {

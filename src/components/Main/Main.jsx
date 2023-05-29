@@ -5,9 +5,7 @@ import styles from "./Main.module.css";
 export function Main() {
   return (
     <div>
-      <div className={styles.travelInfo}>
-        <TravelInfoToggle />
-      </div>
+      <TravelInfoToggle />
       <div className={styles.map}>
         <MapContainer />
       </div>
