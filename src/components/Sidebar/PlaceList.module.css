@@ -1,31 +1,36 @@
-.placeSummary {
-  font-size: x-large;
-  font-weight: 600;
-  background-color: #f7f7f7;
-  color: #1c59a7;
-  padding: 10px;
-}
-
 .blankList {
-  background-color: #eaeaec;
-  height: 100lvh;
+  background-color: #f7f7f7;
 }
 
 .placeContainer {
   padding: 5px 0px 5px 10px;
   overflow: auto;
   cursor: pointer;
-  border-bottom: 1px solid #e8e4e436;
+  border-bottom: 1px solid var(--grey-2);
 }
 
 .placeContainer:hover {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(254, 194, 12, 0.5);
+  color: var(--grey-5);
+}
+
+.highlighted {
+  background-color: var(--yellow-1) !important;
+  opacity: 1 !important;
+  color: var(--grey-5);
 }
 
 .placeName {
   font-weight: bold;
 }
 
+.placeLocator {
+  height: 15px;
+  margin-right: 3px;
+}
+
 .placeAddress {
-  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  font-size: smaller;
 }

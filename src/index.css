@@ -1,6 +1,13 @@
-* {
-  color: #eee;
-  background-color: #1c59a7;
+:root {
+  --blue-1: #1c59a7;
+  --white-1: #fff;
+  --white-2: #f7f7f7;
+  --grey-1: #eaeaec;
+  --grey-2: #dbdbdc;
+  --grey-3: #b1b1b4;
+  --grey-4: #808080;
+  --grey-5: #424242;
+  --yellow-1: rgb(254, 194, 12);
 }
 
 body {
@@ -13,4 +20,12 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+div[mapboxgl-children] {
+  display: none;
+}
+
+.mapboxgl-control-container {
+  display: none;
 }

@@ -3,7 +3,9 @@ import { Header } from "./components/Header/Header";
 import { MapContainer } from "./components/Main/MapContainer";
 import { PlaceList } from "./components/Sidebar/PlaceList";
 import { MapProvider } from "react-map-gl";
-import style from "./App.module.css";
+import "mapbox-gl/dist/mapbox-gl.css";
+import styles from "./App.module.css";
+import { Main } from "./components/Main/Main";
 
 export const SearchContext = createContext({
   searchPlace: "",
@@ -25,18 +27,18 @@ export function App() {
 
   return (
     <MapProvider>
-      <div className={style.container}>
+      <div className={styles.container}>
         <SearchContext.Provider value={[searchData, setSearchData]}>
-          <header className={style.header}>
+          <header className={styles.header}>
             <Header />
           </header>
           <PlaceContext.Provider value={[clickedPlace, setClickedPlace]}>
-            <aside className={style.sidebar}>
+            <aside className={styles.sidebar}>
               <PlaceList />
             </aside>
 
-            <main className={style.main}>
-              <MapContainer />
+            <main className={styles.main}>
+              <Main />
             </main>
           </PlaceContext.Provider>
         </SearchContext.Provider>
