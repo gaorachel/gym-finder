@@ -1,5 +1,4 @@
 import axios from "axios";
-import { cache } from "./cache";
 
 export async function fetchPlaces(searchData) {
   if (Object.keys(searchData).length === 0) return;
@@ -10,13 +9,10 @@ export async function fetchPlaces(searchData) {
       limit: 25, // max number of results can be retrieveds
       proximity: `${searchData.longitude},${searchData.latitude}`,
       origin: `${searchData.longitude},${searchData.latitude}`,
-      // route: "polyline6",
-      // route_geometry: "polyline6",
       navigation_profile: searchData.travelMethod,
       time_deviation: searchData.travelTime,
     },
   });
 
   return response?.data;
-  // return cache;
 }
