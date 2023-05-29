@@ -13,7 +13,7 @@ export const SearchContext = createContext({
   longitude: NaN,
   latitude: NaN,
   travelMethod: "",
-  travelTime: NaN,
+  travelTime: "",
 });
 
 export const PlaceContext = createContext({

@@ -19,6 +19,8 @@ export function Header() {
         ...formJson,
         longitude: response.result.longitude,
         latitude: response.result.latitude,
+        travelMethod: "walking",
+        travelTime: "15",
       });
     });
   };

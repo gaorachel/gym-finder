@@ -5,7 +5,6 @@ import Map, { Source, Layer, Marker, Popup } from "react-map-gl";
 import { usePlaceData } from "../../hooks/use-place-data";
 import { useIsoData } from "../../hooks/use-iso-data";
 import { ReactComponent as LocationPin } from "./location-pin.svg";
-import styles from "./MapContainer.module.css";
 
 export function MapContainer() {
   const [searchData] = useContext(SearchContext);
@@ -22,15 +21,6 @@ export function MapContainer() {
 
   const [clickedMarker, setClickedMarker] = useState(null);
 
-  const placeLocatorStyle = {
-    id: "point",
-    type: "circle",
-    paint: {
-      "circle-radius": 5,
-      "circle-color": "#1c59a7",
-    },
-  };
-
   const isochroneStyle = {
     id: "iso",
     type: "fill",
@@ -40,22 +30,13 @@ export function MapContainer() {
     },
   };
 
-  const clickedPlaceStyle = {
-    id: "big-point",
-    type: "circle",
-    paint: {
-      "circle-radius": 10,
-      "circle-color": "#fec20c",
-    },
-  };
-
-  const clicked = {
+  const clickedStyle = {
     fill: "var(--yellow-1)",
     height: 30,
     cursor: "pointer",
   };
 
-  const regular = {
+  const regularStyle = {
     fill: "var(--blue-2)",
     height: 30,
     cursor: "pointer",
@@ -75,10 +56,6 @@ export function MapContainer() {
       onMove={(e) => setMapView(e.mapView)}
       mapStyle="mapbox://styles/mapbox/light-v11"
     >
-      {/* <Source id="place-data" type="geojson" data={places}>
-        <Layer {...placeLocatorStyle} />
-      </Source> */}
-
       {places?.features?.map((feature) => {
         return (
           <Marker
@@ -88,7 +65,9 @@ export function MapContainer() {
             onClick={() => setClickedMarker(feature)}
           >
             <LocationPin
-              style={clickedPlace?.properties?.mapbox_id === feature?.properties?.mapbox_id ? clicked : regular}
+              style={
+                clickedPlace?.properties?.mapbox_id === feature?.properties?.mapbox_id ? clickedStyle : regularStyle
+              }
             />
           </Marker>
         );
@@ -111,9 +90,6 @@ export function MapContainer() {
       <Source id="isochrone-data" type="geojson" data={isochrone}>
         <Layer {...isochroneStyle} />
       </Source>
-      {/* <Source id="clicked-place-data" type="geojson" data={clickedPlace}>
-        <Layer {...clickedPlaceStyle} />
-      </Source> */}
     </Map>
   );
 }
