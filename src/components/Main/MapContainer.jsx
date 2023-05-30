@@ -5,6 +5,10 @@ import Map, { Source, Layer, Marker, Popup } from "react-map-gl";
 import { usePlaceData } from "../../hooks/use-place-data";
 import { useIsoData } from "../../hooks/use-iso-data";
 import { ReactComponent as LocationPin } from "./location-pin.svg";
+import mapboxgl from "mapbox-gl";
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 export function MapContainer() {
   const [searchData] = useContext(SearchContext);
