@@ -82,7 +82,7 @@ export function MapContainer() {
         >
           <div>{clickedMarker.properties.name}</div>
           <div>
-            {clickedMarker.properties.address} {clickedMarker.properties.context.postcode.name}
+            {clickedMarker?.properties?.address} {clickedMarker?.properties?.context?.postcode?.name}
           </div>
         </Popup>
       )}
