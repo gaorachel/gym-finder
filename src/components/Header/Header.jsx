@@ -32,7 +32,6 @@ export function Header() {
           <option>Cafe</option>
           <option>Pub</option>
           <option>Restaurant</option>
-          <option>Park</option>
         </select>
         <input className={styles.searchBar} type="text" placeholder="Postcode" name="postcode" />
         <button className={styles.searchButton} type="submit">
