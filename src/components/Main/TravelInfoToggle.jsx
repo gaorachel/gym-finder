@@ -10,8 +10,8 @@ export function TravelInfoToggle() {
   const handleChange = (e) => {
     setSearchData({
       ...searchData,
-      travelMethod: e.currentTarget.elements.travelMethod.value,
-      travelTime: e.currentTarget.elements.travelTime.value,
+      travelMethod: e.currentTarget.elements.travelMethod.value || "walking",
+      travelTime: e.currentTarget.elements.travelTime.value || "15",
     });
   };
 
