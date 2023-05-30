@@ -26,18 +26,18 @@ export function MapContainer() {
     type: "fill",
     paint: {
       "fill-color": "#1c59a7",
-      "fill-opacity": 0.3,
+      "fill-opacity": 0.25,
     },
   };
 
   const clickedStyle = {
     fill: "var(--yellow-1)",
-    height: 30,
+    height: 35,
     cursor: "pointer",
   };
 
   const regularStyle = {
-    fill: "var(--blue-2)",
+    fill: "var(--blue-1)",
     height: 30,
     cursor: "pointer",
   };
@@ -54,7 +54,7 @@ export function MapContainer() {
         });
       }}
       onMove={(e) => setMapView(e.mapView)}
-      mapStyle="mapbox://styles/mapbox/light-v11"
+      mapStyle="mapbox://styles/mapbox/streets-v12"
     >
       {places?.features?.map((feature) => {
         return (
