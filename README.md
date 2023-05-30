@@ -1,6 +1,6 @@
 ### Intro
 
-An app to show you the places (cafe/pub/restaurant) around a postcode provided by you with a isochrone map based on travel methods (walking/cycling/driving) and time (5/15/30mins).
+An app to show you the places (cafe/pub/restaurant) around a postcode (UK only) provided by you with a isochrone map based on travel methods (walking/cycling/driving) and time (5/15/30mins).
 
 https://place-finder-rg.vercel.app/
 
