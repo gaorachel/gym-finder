@@ -2,9 +2,14 @@
   background-color: #f7f7f7;
 }
 
+.placeList {
+  overflow: auto;
+  height: 93.5vh;
+}
+
 .placeContainer {
   padding: 5px 0px 5px 10px;
-  overflow: auto;
+
   cursor: pointer;
   border-bottom: 1px solid var(--grey-2);
 }
