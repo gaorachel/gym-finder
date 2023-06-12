@@ -1,8 +1,9 @@
 import { FormEvent, useContext } from "react";
 import { SearchContext } from "../../App";
 import { fetchCoordinate } from "../../api/fetchCoordinate";
-import { SearchContextType } from "../../types";
 import styles from "./Header.module.css";
+
+import type { SearchContextType } from "../../types";
 
 type FormJsonType = {
   searchPlace: string;
