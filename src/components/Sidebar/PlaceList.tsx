@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { usePlaceData } from "../../hooks/use-place-data";
 import { PlaceContext, SearchContext } from "../../App";
 import { IoLocationSharp } from "react-icons/io5";
@@ -6,7 +6,7 @@ import classNames from "classnames";
 import styles from "./PlaceList.module.css";
 
 export function PlaceList() {
-  const { places } = usePlaceData({});
+  const { places } = usePlaceData();
   const [searchData] = useContext(SearchContext);
   const [clickedPlace, setClickedPlace] = useContext(PlaceContext);
 
