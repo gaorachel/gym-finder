@@ -1,16 +1,16 @@
 import axios from "axios";
-import { Feature } from "maplibre-gl";
-import { SearchDataType } from "../types";
+
+import type { PlacesType, SearchDataType } from "../types";
 
 export async function fetchPlaces(searchData: SearchDataType) {
-  if (Object.keys(searchData).length === 0) return;
+  if (Number.isNaN(searchData.latitude) || Number.isNaN(searchData.longitude)) return;
 
-  const response = await axios.get<Feature>(
+  const response = await axios.get<PlacesType>(
     `https://api.mapbox.com/search/searchbox/v1/category/${searchData.searchPlace}?`,
     {
       params: {
         access_token: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
-        limit: 25, // max number of results can be retrieveds
+        limit: 25, // max number of results can be retrieved
         proximity: `${searchData.longitude},${searchData.latitude}`,
         origin: `${searchData.longitude},${searchData.latitude}`,
         navigation_profile: searchData.travelMethod,
