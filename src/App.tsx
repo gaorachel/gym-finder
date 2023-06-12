@@ -1,29 +1,39 @@
-import React, { createContext, useState } from "react";
+import { createContext, useState } from "react";
 import { Header } from "./components/Header/Header";
-import { MapContainer } from "./components/Main/MapContainer";
 import { PlaceList } from "./components/Sidebar/PlaceList";
 import { MapProvider } from "react-map-gl";
+import { Main } from "./components/Main/Main";
 import "mapbox-gl/dist/mapbox-gl.css";
 import styles from "./App.module.css";
-import { Main } from "./components/Main/Main";
 
-export const SearchContext = createContext({
-  searchPlace: "",
-  postcode: "",
-  longitude: NaN,
-  latitude: NaN,
-  travelMethod: "",
-  travelTime: "",
-});
+import type { SearchContextType, PlaceContextType, SearchDataType } from "./types";
+import type { Feature } from "maplibre-gl";
 
-export const PlaceContext = createContext({
-  name: "",
-  coordinate: "",
-});
+export const SearchContext = createContext<SearchContextType>([
+  {
+    searchPlace: "",
+    postcode: "",
+    longitude: NaN,
+    latitude: NaN,
+    travelMethod: "walking",
+    travelTime: "15",
+  },
+  () => {},
+]);
+
+export const PlaceContext = createContext<PlaceContextType>([null, () => {}]);
 
 export function App() {
-  const [searchData, setSearchData] = useState({});
-  const [clickedPlace, setClickedPlace] = useState({});
+  const [searchData, setSearchData] = useState<SearchDataType>({
+    searchPlace: "",
+    postcode: "",
+    longitude: NaN,
+    latitude: NaN,
+    travelMethod: "walking",
+    travelTime: "15",
+  });
+
+  const [clickedPlace, setClickedPlace] = useState<Feature | null>(null);
 
   return (
     <MapProvider>

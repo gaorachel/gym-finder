@@ -1,17 +1,25 @@
-import React, { useContext } from "react";
+import { ChangeEvent, useContext } from "react";
 import { SearchContext } from "../../App";
 import { MdDirectionsWalk, MdDirectionsBike, MdDirectionsCar } from "react-icons/md";
-import classNames from "classnames";
 import styles from "./TravelInfoToggle.module.css";
 
 export function TravelInfoToggle() {
   const [searchData, setSearchData] = useContext(SearchContext);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLFormElement>) => {
+    const travelMethod = (e.currentTarget.elements.namedItem("travelMethod") as HTMLInputElement).value as
+      | "walking"
+      | "cycling"
+      | "driving";
+    const travelTime = (e.currentTarget.elements.namedItem("travelMethod") as HTMLInputElement).value as
+      | "5"
+      | "15"
+      | "30";
+
     setSearchData({
       ...searchData,
-      travelMethod: e.currentTarget.elements.travelMethod.value || "walking",
-      travelTime: e.currentTarget.elements.travelTime.value || "15",
+      travelMethod: travelMethod || "walking",
+      travelTime: travelTime || "15",
     });
   };
 
