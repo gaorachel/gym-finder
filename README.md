@@ -1,7 +1,20 @@
 ### Intro
 
-An app to show you the places (cafe/pub/restaurant) around a postcode (UK only) provided by you with a isochrone map based on travel methods (walking/cycling/driving) and time (5/15/30mins).
+An app to help you discover and explore cafes, pubs, and restaurants around a specific postcode in the UK. The app utilises Mapbox services to generate an isochrone map based on different travel methods such as walking, cycling, and driving, allowing you to visualize the reachable areas within 5, 15, or 30 minutes.
 
+### Features
+- Search for cafes, pubs, and restaurants near a postcode of your choice.
+- View an interactive map displaying the reachable areas based on your preferred travel method and time.
+- Select from three travel methods: walking, cycling, or driving.
+- Choose between three travel time options: 5 minutes, 15 minutes, or 30 minutes.
+- Get detailed information about each location, such as place name, address, and postcode.
+
+### Technologies Used
+- React.js for building the frontend interface.
+- Mapbox API for geolocation and map visualization.
+- TypeScript for type checking and enhanced code reliability.
+
+### Link
 https://place-finder-rg.vercel.app/
 
 ### Preview
