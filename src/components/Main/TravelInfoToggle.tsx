@@ -11,7 +11,7 @@ export function TravelInfoToggle() {
       | "walking"
       | "cycling"
       | "driving";
-    const travelTime = (e.currentTarget.elements.namedItem("travelMethod") as HTMLInputElement).value as
+    const travelTime = (e.currentTarget.elements.namedItem("travelTime") as HTMLInputElement).value as
       | "5"
       | "15"
       | "30";
